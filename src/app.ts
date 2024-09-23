@@ -1,11 +1,12 @@
 import express, { Request, Response } from 'express';
+import bodyParser from 'body-parser';
+import appRouter from './routes/app.router';
 
 const app = express();
 
-app.use(express.json());
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
-app.get('/', (req: Request, res: Response) => {
-  res.send('Hello Again!');
-});
+app.use('/', appRouter);
 
 export default app;
