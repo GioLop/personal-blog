@@ -1,13 +1,17 @@
 import { promises } from 'node:fs';
 import path from 'node:path';
-import { Article, ArticleList, ArticlesIndex } from './articles.schema';
+import { Article, ArticleData, ArticleList, ArticlesIndex } from './articles.schema';
+import ShortUniqueId from 'short-unique-id';
+import js from '@eslint/js';
 
 const ARTICLES_DIRECTORY = path.join(__dirname, '..', '..', 'data');
 const ARTICLES_INDEX_PATH = path.join(ARTICLES_DIRECTORY, 'articles_index.json');
 
 const STANDARD = 'utf8';
 
-const { readFile, stat } = promises;
+const uuid = new ShortUniqueId({ length: 10 });
+
+const { readFile, writeFile, stat } = promises;
 
 const checkFileExistence = async (path:string) => !!(await stat(path).catch(() => false));
 
@@ -35,7 +39,18 @@ const getArticleById = async (articleId:string) => {
   return JSON.parse(articleData) as Article;
 };
 
+const createArticle = async (articleData:ArticleData) => {
+  const id = uuid.rnd();
+  
+  await writeFile(
+    path.join(ARTICLES_DIRECTORY, `article_${id}.json`), 
+    JSON.stringify({ id, ...articleData}),
+    STANDARD);
+  console.log(articleData);
+};
+
 export {
   getArticlesList,
-  getArticleById
+  getArticleById,
+  createArticle
 };

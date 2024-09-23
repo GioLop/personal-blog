@@ -1,14 +1,20 @@
+interface ArticleData {
+  title: string;
+  publishDate: string;
+  body: string;
+}
+
 interface Article {
   id: string;
   title: string;
-  publish_date: string;
+  publishDate: string;
   body: string;
 }
 
 interface ArticleIndex {
   id: string,
-  tite: string,
-  publish_date: string,
+  title: string,
+  publishDate: string,
   fileName: string,
   path: string,
   isActive: boolean 
@@ -19,6 +25,7 @@ type ArticleList = ArticleIndex[];
 type ArticlesIndex = Record<string, ArticleIndex>;
 
 export {
+  ArticleData,
   Article,
   ArticleList,
   ArticlesIndex

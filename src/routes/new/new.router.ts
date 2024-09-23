@@ -1,9 +1,9 @@
-import { Request, Response, Router } from 'express';
+import { Router } from 'express';
+import { httpGetNewHandler, httpPostNewHandler } from './new.handler';
 
 const newRouter = Router();
 
-newRouter.get('/', (_req: Request, res: Response) => {
-  res.send('New Page');
-});
+newRouter.get('/', httpGetNewHandler);
+newRouter.post('/', httpPostNewHandler);
 
 export default newRouter;

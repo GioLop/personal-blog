@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h2><%= formTitle %></h2>
+  <form action="<%= handler %>" method="<%= method %>">
+    <div>
+      <label for="articleTitle">Article Title</label>
+      <br>
+      <input type="text" id="articleTitle" name="articleTitle">
+    </div>
+
+    <div>
+      <label for="publishDate">Publishing Date</label>
+      <br>
+      <input type="date" id="publishDate" name="publishDate">
+    </div>
+
+    <div>
+      <label for="content">Content</label>
+      <br>
+      <textarea id="content" name="content"></textarea>
+    </div>
+
+    <input type="submit" value="<%= submitText %>">
+  </form>
+</body>
+</html>
