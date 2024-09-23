@@ -1,9 +1,8 @@
-import { Request, Response, Router } from 'express';
+import { Router } from 'express';
+import { httpGetArticleHandler } from './article.handler';
 
 const articleRouter = Router();
 
-articleRouter.get('/', (_req: Request, res: Response) => {
-  res.send('Article Page');
-});
+articleRouter.get('/:articleId', httpGetArticleHandler);
 
 export default articleRouter;

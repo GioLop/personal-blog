@@ -5,9 +5,18 @@ interface Article {
   body: string;
 }
 
-type ArticleList = Article[];
+interface ArticleIndex {
+  id: string,
+  tite: string,
+  publish_date: string,
+  fileName: string,
+  path: string,
+  isActive: boolean 
+};
 
-type ArticlesIndex = Record<string, Article>;;
+type ArticleList = ArticleIndex[];
+
+type ArticlesIndex = Record<string, ArticleIndex>;
 
 export {
   Article,

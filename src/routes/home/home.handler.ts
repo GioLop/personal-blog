@@ -3,11 +3,9 @@ import { getArticlesList } from '../../models/articles.model';
 
 const httpGetHomeHandler = (_req: Request, res: Response) => {
   void (async () => {
-    const articleList = await getArticlesList();
+    const articles = await getArticlesList();
 
-    res.render('pages/home', {
-      articles: articleList
-    });
+    res.render('pages/home', { articles });
   })();
 };
 
