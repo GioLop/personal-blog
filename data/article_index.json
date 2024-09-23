@@ -1,0 +1,34 @@
+{
+   "1": {
+      "id": "1",
+      "title": "My first article",
+      "publish_date": "August 7, 2024",
+      "source": "./article_1.json",
+      "path": "/article/1",
+      "active": true 
+   },
+   "2": {
+      "id": "2",
+      "title": "My second article",
+      "publish_date": "August 10, 2024",
+      "source": "./article_2.json",
+      "path": "/article/2",
+      "active": true 
+   },
+   "3": {
+      "id": "3",
+      "title": "My third article",
+      "publish_date": "August 30, 2024",
+      "source": "./article_3.json",
+      "path": "/article/3",
+      "active": true 
+   },
+   "4": {
+      "id": "4",
+      "title": "My fourth article",
+      "publish_date": "August 30, 2024",
+      "source": "./article_4.json",
+      "path": "/article/4",
+      "active": true 
+   }
+}

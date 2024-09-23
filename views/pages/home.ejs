@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h1>Personal Blog</h1>
+  <ul>
+    <% articles.forEach(({ title, publish_date, path }) => { %>
+    <li>
+      <div><a href="<%= path %>"><%= title %></a></div>
+      <div><%= publish_date %></div>
+    </li>
+    <% }) %>
+  </ul>
+</body>
+</html>

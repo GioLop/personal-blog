@@ -1,9 +1,8 @@
-import { Request, Response, Router } from 'express';
+import { Router } from 'express';
+import { httpGetHomeHandler } from './home.handler';
 
 const homeRouter = Router();
 
-homeRouter.get('/', (_req: Request, res: Response) => {
-  res.send('Home Page');
-});
+homeRouter.get('/', httpGetHomeHandler);
 
 export default homeRouter;
