@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { getArticleById } from '../../models/articles.model';
+import { getArticleById } from '../../models/article.model';
 
 const httpGetArticleHandler = (req: Request, res: Response) => {
   void (async () => {

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div>
+    <h1>Personal Blog</h1>
+    <a href="/new">Add</a>
+  </div>
+  <ul></ul>
+    <% articles.forEach(({ title, id }) => { %>
+    <li>
+      <h3><a href="/article/<%= id %>"><%= title %></a></h3>
+      <div>
+        <a href="/edit/<%= id %>">Edit</a>
+        <a href="/delete/<%= id %>">Delete</a>
+      </div>
+    </li>
+    <% }) %>
+  </ul>
+</body>
+</html>

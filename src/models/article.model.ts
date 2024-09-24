@@ -1,6 +1,6 @@
 import { promises } from 'node:fs';
 import path from 'node:path';
-import { Article, ArticleData, ArticleList, ArticlesIndex } from './articles.schema';
+import { Article, ArticleData, ArticleList, ArticlesIndex } from './article.schema';
 import { getDateFormated } from '../lib/date.lib';
 import { getUniqueId } from '../lib/uuid.lib';
 
@@ -34,7 +34,6 @@ const addArticleToIndex = async (id:string, articleData:ArticleData) => {
     id,
     title,
     publishDate,
-    path: `/article/${id}`,
     fileName: `article_${id}.json`,
     isActive: true
   };

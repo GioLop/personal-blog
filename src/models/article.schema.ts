@@ -16,7 +16,6 @@ interface ArticleIndex {
   title: string,
   publishDate: string,
   fileName: string,
-  path: string,
   isActive: boolean 
 };
 

@@ -1,9 +1,8 @@
-import { Request, Response, Router } from 'express';
+import { Router } from 'express';
+import { httpGetAdminHandler } from './admin.handler';
 
 const adminRouter = Router();
 
-adminRouter.get('/', (_req: Request, res: Response) => {
-  res.send('Admin Page');
-});
+adminRouter.get('/', httpGetAdminHandler);
 
 export default adminRouter;

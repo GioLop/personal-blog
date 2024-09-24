@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
-import { createArticle } from '../../models/articles.model';
-import { ArticleData } from '../../models/articles.schema';
+import { createArticle } from '../../models/article.model';
+import { ArticleData } from '../../models/article.schema';
 
 interface RequestBody {
   articleTitle: string,
