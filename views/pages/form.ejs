@@ -11,19 +11,29 @@
     <div>
       <label for="articleTitle">Article Title</label>
       <br>
-      <input type="text" id="articleTitle" name="articleTitle">
+      <input 
+        type="text"
+        id="articleTitle"
+        name="articleTitle"
+        value="<% if (locals?.article) { %><%= article.title.trim() %><% } else { %><% }%>">
     </div>
 
     <div>
       <label for="publishDate">Publishing Date</label>
       <br>
-      <input type="date" id="publishDate" name="publishDate">
+      <input
+        type="date"
+        id="publishDate"
+        name="publishDate"
+        value="<% if (locals?.article) { %><%= new Date().toISOString(article.publishDate).slice(0, 10) %><% } else { %><% } %>">
     </div>
 
     <div>
       <label for="content">Content</label>
       <br>
-      <textarea id="content" name="content"></textarea>
+      <textarea
+        id="content"
+        name="content"><% if (locals?.article) {%><%= article.body.trim()%><%} else {%><%}%></textarea>
     </div>
 
     <input type="submit" value="<%= submitText %>">

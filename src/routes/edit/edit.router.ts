@@ -1,9 +1,9 @@
-import { Request, Response, Router } from 'express';
+import { Router } from 'express';
+import { httpGetEditHandler, httpPostEditHandler } from './edit.handler';
 
 const editRouter = Router();
 
-editRouter.get('/', (_req: Request, res: Response) => {
-  res.send('Edit Page');
-});
+editRouter.get('/:articleId', httpGetEditHandler);
+editRouter.post('/:articleId', httpPostEditHandler);
 
 export default editRouter;

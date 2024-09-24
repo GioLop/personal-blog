@@ -13,7 +13,7 @@
   <ul></ul>
     <% articles.forEach(({ title, id }) => { %>
     <li>
-      <h3><a href="/article/<%= id %>"><%= title %></a></h3>
+      <h3><%= title %></h3>
       <div>
         <a href="/edit/<%= id %>">Edit</a>
         <a href="/delete/<%= id %>">Delete</a>
