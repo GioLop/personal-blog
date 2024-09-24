@@ -1,15 +1,13 @@
 import { promises } from 'node:fs';
 import path from 'node:path';
 import { Article, ArticleData, ArticleList, ArticlesIndex } from './articles.schema';
-import ShortUniqueId from 'short-unique-id';
-import js from '@eslint/js';
+import { getDateFormated } from '../lib/date.lib';
+import { getUniqueId } from '../lib/uuid.lib';
 
 const ARTICLES_DIRECTORY = path.join(__dirname, '..', '..', 'data');
 const ARTICLES_INDEX_PATH = path.join(ARTICLES_DIRECTORY, 'articles_index.json');
 
 const STANDARD = 'utf8';
-
-const uuid = new ShortUniqueId({ length: 10 });
 
 const { readFile, writeFile, stat } = promises;
 
@@ -20,9 +18,34 @@ const getArticlesIndex = async () => {
 
   if (!indexExists) return {};
   
-  const fileData = await readFile(path.resolve(ARTICLES_INDEX_PATH), STANDARD);
+  try {
+    const fileData = await readFile(path.resolve(ARTICLES_INDEX_PATH), STANDARD);
+    return JSON.parse(fileData) as ArticlesIndex;  
+  } catch (error) {
+    console.log(error);
+    throw new Error('Error while getting articles index data');
+  }
+};
+
+const addArticleToIndex = async (id:string, articleData:ArticleData) => {
+  const artcilesIndex = await getArticlesIndex();
+  const { title, publishDate } = articleData;
+  const newArticleToIndex = {
+    id,
+    title,
+    publishDate,
+    path: `/article/${id}`,
+    fileName: `article_${id}.json`,
+    isActive: true
+  };
   
-  return JSON.parse(fileData) as ArticlesIndex;
+  artcilesIndex[id] = newArticleToIndex;
+  
+  await writeFile(
+    path.resolve(ARTICLES_INDEX_PATH), 
+    JSON.stringify(artcilesIndex),
+    STANDARD);
+  return newArticleToIndex;
 };
 
 const getArticlesList = async () => {
@@ -40,13 +63,21 @@ const getArticleById = async (articleId:string) => {
 };
 
 const createArticle = async (articleData:ArticleData) => {
-  const id = uuid.rnd();
+  const id = getUniqueId();
+  const publishDate = getDateFormated(articleData.publishDate);
   
-  await writeFile(
-    path.join(ARTICLES_DIRECTORY, `article_${id}.json`), 
-    JSON.stringify({ id, ...articleData}),
-    STANDARD);
-  console.log(articleData);
+  try {
+    await writeFile(
+      path.join(ARTICLES_DIRECTORY, `article_${id}.json`), 
+      JSON.stringify({ ...articleData, id, publishDate }),
+      STANDARD);
+    
+    const articleIndex = addArticleToIndex(id, { ...articleData, publishDate });
+
+    return articleIndex;
+  } catch (error) {
+    console.log(error);
+  }     
 };
 
 export {

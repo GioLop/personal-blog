@@ -8,10 +8,10 @@
 <body>
   <h1>Personal Blog</h1>
   <ul>
-    <% articles.forEach(({ title, publish_date, path }) => { %>
+    <% articles.forEach(({ title, publishDate, path }) => { %>
     <li>
       <div><a href="<%= path %>"><%= title %></a></div>
-      <div><%= publish_date %></div>
+      <div><%= publishDate %></div>
     </li>
     <% }) %>
   </ul>
