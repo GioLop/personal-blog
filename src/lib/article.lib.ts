@@ -1,4 +1,4 @@
-import { Article, ArticleData } from '../models/article.schema';
+import { Article, ArticleData } from '../types/article.types';
 
 const getChanges = (org:string, updt:string) => org === updt ? org : updt;
 

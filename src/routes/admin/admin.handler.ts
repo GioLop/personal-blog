@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { getArticlesList } from '../../models/article.model';
+import { getArticlesList } from '../../models/index.model';
 
 const httpGetAdminHandler = (_req: Request, res: Response) => {
   void (async () => {

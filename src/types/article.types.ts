@@ -2,14 +2,11 @@ interface ArticleData {
   title: string;
   publishDate: string;
   body: string;
-}
+};
 
-interface Article {
+interface Article extends ArticleData {
   id: string;
-  title: string;
-  publishDate: string;
-  body: string;
-}
+};
 
 interface ArticleIndex {
   id: string,

@@ -1,11 +1,7 @@
 import { Request, Response } from 'express';
 import { getUserId, isValidAdmin } from '../../lib/user.lib';
 import { authSession } from '../../middlewares/authorize.middleware';
-
-interface RequestBody {
-  userName: string,
-  userPassword: string,
-};
+import { LoginRequestBody } from '../../types/request.types';
 
 const httpLoginGetHandler = (req: Request, res: Response) => {
   res.render('pages/loginForm', {
@@ -16,7 +12,7 @@ const httpLoginGetHandler = (req: Request, res: Response) => {
 };
 
 const httpLoginPostHandler = (req: Request, res: Response) => {
-  const { userName, userPassword } = req.body as RequestBody;
+  const { userName, userPassword } = req.body as LoginRequestBody;
   
   if (isValidAdmin(userName, userPassword)) {
     const userId = getUserId();
