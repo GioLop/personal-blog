@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
 import { getArticleById, updateArticle } from '../../models/article.model';
-import { AritcleRequestBody } from '../new/new.handler';
+import { ArticleRequestBody } from '../new/new.handler';
 import { ArticleData } from '../../models/article.schema';
 
 const httpGetEditHandler = (req: Request, res: Response) => {
@@ -21,7 +21,8 @@ const httpGetEditHandler = (req: Request, res: Response) => {
 const httpPostEditHandler = (req: Request, res: Response) => {
   void(async () => {
     const { articleId } = req.params;
-    const { body: { articleTitle, publishDate, content } } = req as { body: AritcleRequestBody };
+    const { body: { articleTitle, publishDate, content } } = req as { body: ArticleRequestBody
+    };
     const articleData: ArticleData = {
       title: articleTitle,
       publishDate,
@@ -30,7 +31,7 @@ const httpPostEditHandler = (req: Request, res: Response) => {
 
     await updateArticle(articleId, articleData);
   
-    res.send('Form sended');
+    res.redirect(`/article/${articleId}`);
   })();
 };
 
