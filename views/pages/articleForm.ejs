@@ -25,7 +25,7 @@
         type="date"
         id="publishDate"
         name="publishDate"
-        value="<% if (locals?.article) { %><%= new Date().toISOString(article.publishDate).slice(0, 10) %><% } else { %><% } %>">
+        value="<% if (locals?.article) { %><%= new Date(article.publishDate).toISOString(article.publishDate).slice(0, 10) %><% } else { %><% } %>">
     </div>
 
     <div>

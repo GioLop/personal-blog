@@ -2,7 +2,7 @@ import { Request, Response } from 'express';
 import { createArticle } from '../../models/article.model';
 import { ArticleData } from '../../models/article.schema';
 
-interface RequestBody {
+interface AritcleRequestBody {
   articleTitle: string,
   publishDate: string,
   content: string
@@ -19,7 +19,7 @@ const httpGetNewHandler = (_req: Request, res: Response) => {
 
 const httpPostNewHandler = (req: Request, res: Response) => {
   void(async () => {
-    const { body: { articleTitle, publishDate, content } } = req as { body: RequestBody };
+    const { body: { articleTitle, publishDate, content } } = req as { body: AritcleRequestBody };
     const articleData: ArticleData = {
       title: articleTitle,
       publishDate,
@@ -34,5 +34,6 @@ const httpPostNewHandler = (req: Request, res: Response) => {
 
 export {
   httpGetNewHandler,
-  httpPostNewHandler
+  httpPostNewHandler,
+  AritcleRequestBody
 };

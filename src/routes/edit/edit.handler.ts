@@ -1,5 +1,7 @@
 import { Request, Response } from 'express';
-import { getArticleById } from '../../models/article.model';
+import { getArticleById, updateArticle } from '../../models/article.model';
+import { AritcleRequestBody } from '../new/new.handler';
+import { ArticleData } from '../../models/article.schema';
 
 const httpGetEditHandler = (req: Request, res: Response) => {
   void (async () => {
@@ -17,8 +19,19 @@ const httpGetEditHandler = (req: Request, res: Response) => {
 };
 
 const httpPostEditHandler = (req: Request, res: Response) => {
-  console.log(req.body);
-  res.send('Form sended');
+  void(async () => {
+    const { articleId } = req.params;
+    const { body: { articleTitle, publishDate, content } } = req as { body: AritcleRequestBody };
+    const articleData: ArticleData = {
+      title: articleTitle,
+      publishDate,
+      body: content
+    };
+
+    await updateArticle(articleId, articleData);
+  
+    res.send('Form sended');
+  })();
 };
 
 export {

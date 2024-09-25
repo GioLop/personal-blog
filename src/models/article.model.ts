@@ -3,6 +3,7 @@ import path from 'node:path';
 import { Article, ArticleData, ArticleList, ArticlesIndex } from './article.schema';
 import { getDateFormated } from '../lib/date.lib';
 import { getUniqueId } from '../lib/uuid.lib';
+import { getArticleChanges } from '../lib/article.lib';
 
 const ARTICLES_DIRECTORY = path.join(__dirname, '..', '..', 'data');
 const ARTICLES_INDEX_PATH = path.join(ARTICLES_DIRECTORY, 'articles_index.json');
@@ -85,8 +86,47 @@ const createArticle = async (articleData:ArticleData) => {
   }     
 };
 
+const updateArticleIndex = async (id:string, articleData:ArticleData) => {
+  const { title, publishDate } = articleData;
+
+  try {
+    const articlesIndex = await getArticlesIndex();
+    
+    articlesIndex[id] = {...articlesIndex[id], title, publishDate };
+    
+    await writeFile(
+      path.resolve(ARTICLES_INDEX_PATH), 
+      JSON.stringify(articlesIndex),
+      STANDARD);
+    
+    return articlesIndex[id];  
+  } catch (error) {
+    console.log(error);
+    throw new Error('Error while updating article in the index');
+  }
+};
+
+const updateArticle = async (id:string, articleData:ArticleData) => {
+  const originalArticle = await getArticleById(id);
+  const { title, publishDate, body } = getArticleChanges(originalArticle, articleData);
+
+  try {
+    await writeFile(
+      path.join(ARTICLES_DIRECTORY, `article_${id}.json`), 
+      JSON.stringify({ id, title, publishDate, body }),
+      STANDARD);
+    
+    const articleIndex = await updateArticleIndex(id, { title, publishDate, body });
+
+    return articleIndex;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 export {
   getArticlesList,
   getArticleById,
-  createArticle
+  createArticle,
+  updateArticle
 };
