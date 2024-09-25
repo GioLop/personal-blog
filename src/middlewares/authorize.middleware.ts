@@ -13,3 +13,6 @@ const authorizeMiddleware = (req: Request, res: Response, next: NextFunction) =>
 };
 
 export default authorizeMiddleware;
+export {
+  authSession
+};
