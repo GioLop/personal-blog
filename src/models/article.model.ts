@@ -28,7 +28,6 @@ const getArticlesIndex = async () => {
 };
 
 const addArticleToIndex = async (id:string, articleData:ArticleData) => {
-  const artcilesIndex = await getArticlesIndex();
   const { title, publishDate } = articleData;
   const newArticleToIndex = {
     id,
@@ -37,14 +36,21 @@ const addArticleToIndex = async (id:string, articleData:ArticleData) => {
     fileName: `article_${id}.json`,
     isActive: true
   };
-  
-  artcilesIndex[id] = newArticleToIndex;
-  
-  await writeFile(
-    path.resolve(ARTICLES_INDEX_PATH), 
-    JSON.stringify(artcilesIndex),
-    STANDARD);
-  return newArticleToIndex;
+
+  try {
+    const artcilesIndex = await getArticlesIndex();
+    artcilesIndex[id] = newArticleToIndex;
+    
+    await writeFile(
+      path.resolve(ARTICLES_INDEX_PATH), 
+      JSON.stringify(artcilesIndex),
+      STANDARD);
+    
+    return newArticleToIndex;  
+  } catch (error) {
+    console.log(error);
+    throw new Error('Error while adding article to the index');
+  }
 };
 
 const getArticlesList = async () => {
@@ -71,7 +77,7 @@ const createArticle = async (articleData:ArticleData) => {
       JSON.stringify({ ...articleData, id, publishDate }),
       STANDARD);
     
-    const articleIndex = addArticleToIndex(id, { ...articleData, publishDate });
+    const articleIndex = await addArticleToIndex(id, { ...articleData, publishDate });
 
     return articleIndex;
   } catch (error) {

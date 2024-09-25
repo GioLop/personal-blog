@@ -6,7 +6,7 @@ const httpGetEditHandler = (req: Request, res: Response) => {
     const { articleId } = req.params;
     const article = await getArticleById(articleId);
     
-    res.render('pages/form', {
+    res.render('pages/articleForm', {
       formTitle: 'Edit Article',
       submitText: 'Update',
       handler: `/edit/${articleId}`,

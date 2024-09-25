@@ -9,7 +9,7 @@ interface RequestBody {
 }
 
 const httpGetNewHandler = (_req: Request, res: Response) => {
-  res.render('pages/form', {
+  res.render('pages/articleForm', {
     formTitle: 'New Article',
     submitText: 'Publish',
     handler: '/new',
