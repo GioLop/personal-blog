@@ -1,16 +1,18 @@
-const ADMIN_MOCK = {
-  userID: 'mock01',
-  userName: 'admin',
-  password: 'blogAdmin123'
-};
+import config from '../config';
+
+const { 
+  ADMIN_USERNAME,
+  ADMIN_PASSWORD,
+  USERD_ID
+} = config;
 
 const isValidAdmin = (
   userName: string,
   password: string
-) => userName === ADMIN_MOCK.userName && password === ADMIN_MOCK.password;
+) => userName === ADMIN_USERNAME && password === ADMIN_PASSWORD;
 
 const getUserId = () => {
-  return ADMIN_MOCK.userID;
+  return USERD_ID;
 };
 
 export {
