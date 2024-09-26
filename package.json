@@ -5,8 +5,10 @@
   "main": "src/server.js",
   "scripts": {
     "build": "tsc",
-    "start": "npm run build && node ./dist/server.js",
-    "dev": "tsc-watch --onSuccess \"node ./dist/server.js\"",
+    "start": "npm run build && npm run scss && node ./dist/server.js",
+    "dev": "npm run scss:watch & tsc-watch --onSuccess \"node ./dist/server.js\"",
+    "scss": "sass ./src/scss/main.scss ./public/styles/main.css",
+    "scss:watch": "npm run scss --watch",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "prettier": "prettier --ignore-path .gitignore --write \"./src/**/*.+(js|ts|json)\"",
@@ -33,6 +35,7 @@
     "eslint-plugin-node": "^11.1.0",
     "globals": "^15.9.0",
     "prettier": "^3.3.3",
+    "sass": "^1.79.3",
     "tsc-watch": "^6.2.0",
     "typescript": "5.5",
     "typescript-eslint": "^8.6.0"
