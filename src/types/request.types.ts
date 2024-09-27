@@ -9,7 +9,12 @@ interface LoginRequestBody {
   userPassword: string,
 };
 
+interface DeleteRequestBody {
+  delete: string,
+};
+
 export {
   ArticleRequestBody,
-  LoginRequestBody
+  LoginRequestBody,
+  DeleteRequestBody
 };

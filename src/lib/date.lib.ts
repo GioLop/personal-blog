@@ -1,3 +1,5 @@
+import { ArticleIndex } from '../types/article.types';
+
 const MONTHS = [
   'January',
   'February',
@@ -22,6 +24,12 @@ const getDateFormated = (date:string) => {
   return `${MONTHS[month + 1]} ${day}, ${year}`;
 };
 
+const orderNewestFirst = (
+  articleA: ArticleIndex,
+  articleB: ArticleIndex
+) => new Date(articleB.publishDate).getTime() - new Date(articleA.publishDate).getTime(); 
+
 export {
-  getDateFormated
+  getDateFormated,
+  orderNewestFirst
 };

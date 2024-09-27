@@ -1,14 +1,30 @@
 import { ArticleData, ArticleList } from '../types/article.types';
 import { getIndexFileData, writeIndexFile } from '../lib/file.lib';
+import { orderNewestFirst } from '../lib/date.lib';
+
 
 const getArticlesIndex = async () => {
   const articlesIndex = await getIndexFileData();
   return articlesIndex;
 };
 
-const getArticlesList = async () => {
+const getArticleFromIndex = async (articleId: string) => {
+  const articlesIndex = await getArticlesIndex();
+  return articlesIndex[articleId];
+};
+
+const getAllArticlesList = async () => {
   const articleIndex = await getArticlesIndex();
-  return  Object.values(articleIndex) as ArticleList;
+  const articlesList = Object.values(articleIndex).filter((articleIndex) => articleIndex.isActive);
+  
+  return articlesList.sort(orderNewestFirst) as ArticleList;
+};
+
+const getAvailableArticlesList = async () => {
+  const allArticles = await getAllArticlesList();
+  const availableArticles = allArticles.filter(article => new Date(article.publishDate) < new Date());
+
+  return availableArticles;
 };
 
 const addArticleToIndex = async (id:string, articleData:ArticleData) => {
@@ -40,9 +56,22 @@ const updateArticleIndex = async (id:string, articleData:ArticleData) => {
   return articlesIndex[id];
 };
 
+const deactivateArticleInIndex = async (id:string) => {
+  const articlesIndex = await getArticlesIndex();
+  
+  articlesIndex[id] = {...articlesIndex[id], isActive: false };
+  
+  await writeIndexFile(articlesIndex);
+  
+  return articlesIndex[id];
+};
+
 export {
-  getArticlesList,
   getArticlesIndex,
+  getArticleFromIndex,
+  getAllArticlesList,
+  getAvailableArticlesList,
   addArticleToIndex,
-  updateArticleIndex
+  updateArticleIndex,
+  deactivateArticleInIndex
 };

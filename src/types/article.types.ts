@@ -23,6 +23,7 @@ type ArticlesIndex = Record<string, ArticleIndex>;
 export {
   ArticleData,
   Article,
+  ArticleIndex,
   ArticleList,
   ArticlesIndex
 };
