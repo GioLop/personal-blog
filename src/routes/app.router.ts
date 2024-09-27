@@ -7,6 +7,7 @@ import newRouter from './new/new.router';
 import loginRouter from './login/login.router';
 import authorizeMiddleware from '../middlewares/authorize.middleware';
 import deleteRouter from './delete/detele.router';
+import errorRouter from './error/error.router';
 
 const appRouter = Router();
 
@@ -17,5 +18,6 @@ appRouter.use('/admin', authorizeMiddleware, adminRouter);
 appRouter.use('/edit', authorizeMiddleware, editRouter);
 appRouter.use('/new', authorizeMiddleware, newRouter);
 appRouter.use('/delete', authorizeMiddleware, deleteRouter);
+appRouter.use('/error', errorRouter);
 
 export default appRouter;

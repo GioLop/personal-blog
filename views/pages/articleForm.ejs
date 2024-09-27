@@ -6,9 +6,10 @@
 </head>
 <body>
   <h2><%= formTitle %></h2>
+  <p>All field marked with * are mandatory.</p>
   <form action="<%= handler %>" method="<%= method %>">
     <div>
-      <label for="articleTitle">Article Title</label>
+      <label for="articleTitle">Article Title *</label>
       <br>
       <input 
         type="text"
@@ -18,7 +19,7 @@
     </div>
 
     <div>
-      <label for="publishDate">Publishing Date</label>
+      <label for="publishDate">Publishing Date *</label>
       <br>
       <input
         type="date"
@@ -28,7 +29,7 @@
     </div>
 
     <div>
-      <label for="content">Content</label>
+      <label for="content">Content *</label>
       <br>
       <textarea
         id="content"

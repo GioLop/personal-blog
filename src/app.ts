@@ -3,6 +3,7 @@ import path from 'node:path';
 import bodyParser from 'body-parser';
 import appRouter from './routes/app.router';
 import sessionMiddleware from './middlewares/session.middleware';
+import errorHandlerMiddleware from './middlewares/error-handler.middleware';
 
 const app = express();
 
@@ -16,5 +17,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use('/', appRouter);
+
+app.use(errorHandlerMiddleware);
 
 export default app;

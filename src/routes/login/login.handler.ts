@@ -20,7 +20,7 @@ const httpLoginPostHandler = (req: Request, res: Response) => {
     
     return res.redirect('/admin');
   } else {
-    res.send('Error while login');
+    throw new Error('Invalid user name or wrong user password');
   }
 };
 
