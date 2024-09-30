@@ -22,7 +22,7 @@ const getAllArticlesList = async () => {
 
 const getAvailableArticlesList = async () => {
   const allArticles = await getAllArticlesList();
-  const availableArticles = allArticles.filter(article => new Date(article.publishDate) < new Date());
+  const availableArticles = allArticles.filter(article => new Date(article.publishDate) <= new Date());
 
   return availableArticles;
 };

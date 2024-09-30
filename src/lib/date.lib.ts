@@ -19,7 +19,7 @@ const getDateFormated = (date:string) => {
   const newDate = new Date(date);
   const year = newDate.getFullYear();
   const month = newDate.getMonth();
-  const day = newDate.getDay();
+  const day = newDate.getDate();
 
   return `${MONTHS[month + 1]} ${day}, ${year}`;
 };

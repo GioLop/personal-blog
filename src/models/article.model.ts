@@ -26,7 +26,7 @@ const updateArticle = async (id:string, articleData:ArticleData) => {
   }
   
   const articleChanges = getArticleChanges(originalArticle, articleData);
-  const articleUpdate = { ...articleChanges, id };
+  const articleUpdate = { ...articleChanges, id, publishDate: getDateFormated(articleChanges.publishDate) };
   
   await writeArticleFile(articleUpdate);
   

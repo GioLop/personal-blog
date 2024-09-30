@@ -33,7 +33,7 @@
       <br>
       <textarea
         id="content"
-        name="content"><% if (locals?.article) {%><%= article.body.trim()%><%} else {%><%}%></textarea>
+        name="content"><% if (locals?.article) {%><%- article.body.trim()%><%} else {%><%}%></textarea>
     </div>
 
     <input type="submit" value="<%= submitText %>">
