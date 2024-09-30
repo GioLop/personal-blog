@@ -58,3 +58,5 @@ npm run dev
  ```shell
 Server listening on http://localhost:PORT_DEFINED_IN_ENV_FILE
 ```
+![Screenshot 2024-09-30 at 6 01 03 PM](https://github.com/user-attachments/assets/74114305-dde8-4e3a-ae6b-d01df3cdadb1)
+
