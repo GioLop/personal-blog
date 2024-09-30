@@ -2,17 +2,36 @@
 <html lang="en">
 <head>
   <%-  include('../partials/head') %>
-  <title>Document</title>
+  <title>Personal Blog</title>
 </head>
 <body>
-  <h1>Personal Blog</h1>
-  <ul>
-    <% articles.forEach(({ title, publishDate, id }) => { %>
-    <li>
-      <div><a href="/article/<%= id %>"><%= title %></a></div>
-      <div><%= publishDate %></div>
-    </li>
-    <% }) %>
-  </ul>
+  <div class="blog-wrapper">
+    <div class="blog-left">
+      <header class="blog-header">
+        <h1 class="blog-title">Personal Blog</h1>
+      </header>
+      <main class="blog-main blog-home">
+        <p class="blog-home__parragraph blog-parragraph">
+          Hi, I’m Gio
+          <br/>
+          Other projects on <a class="blog-link" href="https://github.com/GioLop" target="_blank">GitHub</a>
+          <br/>
+          This is a simple web blog built in Nodejs,
+          this blog have and <a class="blog-link" href="/admin">admin</a>
+          side where you’ll be asked to <a class="blog-link" href="/login">login</a>
+          in order to <span class="blog-bold">add</span>, <span class="blog-bold">edit</span> or <span class="blog-bold">delete</span> articles.
+        </p>
+        <ul class="blog-home__articles-list">
+          <% articles.forEach(({ title, publishDate, id }) => { %>
+          <li class="blog-home__article">
+            <div class="blog-home__publish-date"><%= publishDate %></div>
+            <div class="blog-home__article-title"><a class="blog-link" href="/article/<%= id %>"><%= title %></a></div>
+          </li>
+          <% }) %>
+        </ul>
+      </main>
+    </div>
+
+  </div>
 </body>
 </html>

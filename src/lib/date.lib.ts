@@ -1,27 +1,27 @@
 import { ArticleIndex } from '../types/article.types';
 
 const MONTHS = [
-  'January',
-  'February',
-  'March',
-  'April',
+  'Jan',
+  'Feb',
+  'Mar',
+  'Apr',
   'May',
-  'June',
-  'July',
-  'August',
-  'September',
-  'October',
-  'November',
-  'December'
+  'Jun',
+  'Jul',
+  'Aug',
+  'Sep',
+  'Oct',
+  'Nov',
+  'Dec'
 ];
 
 const getDateFormated = (date:string) => {
-  const newDate = new Date(date);
+  const newDate = new Date(`${date} 00:00`);
   const year = newDate.getFullYear();
   const month = newDate.getMonth();
   const day = newDate.getDate();
 
-  return `${MONTHS[month + 1]} ${day}, ${year}`;
+  return `${MONTHS[month]} ${day}, ${year}`;
 };
 
 const orderNewestFirst = (

@@ -1,0 +1,16 @@
+.blog-admin {
+    &__link {
+      display: flex;
+      margin-bottom: 1.5rem;
+    } 
+  
+    &__article {
+      display: flex;
+      flex-direction: flow;
+      margin-bottom: 1.5rem;
+    }
+  
+    &__links {
+      margin-right: 1.5rem;
+    }
+  }

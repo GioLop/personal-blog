@@ -2,20 +2,38 @@
 <html lang="en">
 <head>
   <%-  include('../partials/head') %>
-  <title>Document</title>
+  <title><%= formTitle %></title>
 </head>
 <body>
-  <h2><%= formTitle %></h2>
-  <form action="<%= handler %>" method="<%= method %>">
-    <div>
-      <label for="">User name</label>
-      <input type="text" name="userName">
+  <div class="blog-wrapper">
+    <div class="blog-left">
+      <header class="blog-header">
+        <h1 class="blog-title"><%= formTitle %></h1>
+      </header>
+      <main class="blog-main blog-login">
+        <p class="blog-login__parragraph blog-parragraph">
+          Type your user name and password to login in order to add, edit or delete articles.
+        </p>
+        <form class="blog-form" action="<%= handler %>" method="<%= method %>">
+          <div class="blog-form__field">
+            <label class="blog-form__label" for="">User name</label>
+            <input class="blog-form__input" type="text" name="userName">
+          </div>
+          
+          <div class="blog-form__field">
+            <label class="blog-form__label" for="">Password</label>
+            <input class="blog-form__input" type="password" name="userPassword">
+          </div>
+          
+          <div class="blog-form__field--right">
+            <input class="blog-form__button" type="submit" value="Login">
+          </div>  
+        </form>
+      </main>
     </div>
-    <div>
-      <label for="">Password</label>
-      <input type="password" name="userPassword">
-    </div>
-    <input type="submit" value="Login">
-  </form>
+    <nav class="blog-right">
+      <a class="blog-link" href="/">Home</a>
+    </nav>
+  </div>
 </body>
 </html>

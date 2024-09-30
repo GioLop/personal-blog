@@ -1,0 +1,68 @@
+.blog-wrapper {
+    display: flex;
+    max-width: 470px;
+    margin: 0px auto;
+    padding: 30px 0;
+  }
+  
+  .blog-title {
+    color: $color_black;
+    font-family: 'JetBrainsBold';
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+  }
+  
+  .blog-parragraph {
+    line-height: 1.5rem;
+    letter-spacing: .03rem;
+  }
+  
+  .blog-main {
+    br {
+      display: block;
+      content: "";
+      height: 1rem;
+   }
+  }
+  
+  .blog-left {
+    width: 356px;
+  }
+  
+  .blog-right {
+    text-align: right;
+    width: 115px;
+  }
+  
+  .blog-home {
+    &__parragraph {
+      margin-bottom: 1.5rem;
+    }
+  
+    &__article {
+      display: flex;
+      flex-direction: flow;
+      margin-bottom: 1.5rem;
+    }
+  
+    &__publish-date {
+      margin-right: 1.5rem;
+    }
+  }
+  
+  .blog-link {
+    color: $color_black;
+    font-family: 'JetBrainsBold';
+    
+    &:hover {
+      text-decoration: none;
+    }
+    
+    &:visited {
+      color: $color_black;
+    }
+  }
+  
+  .blog-bold {
+    font-family: 'JetBrainsBold';
+  }

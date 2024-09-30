@@ -2,11 +2,24 @@
 <html lang="en">
 <head>
   <%-  include('../partials/head') %>
-  <title>Document</title>
+  <title>Error Message</title>
 </head>
 <body>
-  <h2>Something went wrong</h2>
-  <p><%= message %></p>
-  <a href="<%- from %>">Try again</a>
+  <div class="blog-wrapper">
+    <div class="blog-left">
+      <header class="blog-header">
+        <h1 class="blog-title">Something went wrong</h1>
+      </header>
+      <main class="blog-main blog-wrong"></main>
+        <p class="blog-parragraph blog-wrong__parragraph"><%= message %></p>
+        <div class="blog-form__field--right">
+          <a class="blog-link" href="<%- from %>">Try again</a>
+        </div>
+      </main>
+    </div>
+    <nav class="blog-right"></nav>
+      <a class="blog-link" href="<%- from %>">Back</a>
+    </nav>
+  </div>
 </body>
 </html>

@@ -2,11 +2,25 @@
 <html lang="en">
 <head>
   <%-  include('../partials/head') %>
-  <title>Document</title>
+  <title><%= title %></title>
 </head>
 <body>
-  <h2><%= title %></h2>
-  <p><%= publishDate %></p>
-  <p><%- body %></p>
+  <div class="blog-wrapper">
+    <div class="blog-left">
+      <header class="blog-header">
+        <h1 class="blog-title"><%= title %></h1>
+      </header>
+      <main class="blog-main blog-article">
+        <p class="blog-parragraph">
+          <time class="blog-article__time"><%= publishDate %></time>
+        </p>
+        <p class="blog-parragraph">
+          <%- body %></p>
+      </main>
+    </div>
+    <nav class="blog-right">
+      <a class="blog-link" href="/">Home</a>
+    </nav>
+  </div>
 </body>
 </html>

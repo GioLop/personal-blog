@@ -2,23 +2,36 @@
 <html lang="en">
 <head>
   <%-  include('../partials/head') %>
-  <title>Document</title>
+  <title>Confirm Deletion</title>
 </head>
 <body>
-  <h2>Delete Article</h2>
-  <p>Are you sure you want to delete the article <%= title %>?</p>
-  <form action="/delete/<%= id %>" method="post">
-    <div>
-      <input type="radio" id="no" name="delete" value="false" checked />
-      <label for="no">No, I want to keep it.</label>
-    </div>
-  
-    <div>
-      <input type="radio" id="yes" name="delete" value="true" />
-      <label for="yes">Yes, delete this article.</label>
-    </div>
+  <div class="blog-wrapper">
+    <div class="blog-left">
+      <header class="blog-header">
+        <h1 class="blog-title">Delete Article</h1>
+      </header>
+      <main class="blog-main blog-delete">
+        <p class="blog-parragraph blog-delete__parragraph">Are you sure you want to delete the article <%= title %>?</p>
+        <form class="blog-form" action="/delete/<%= id %>" method="post">
+          <div class="blog-form__field">
+            <input type="radio" id="no" name="delete" value="false" checked />
+            <label for="no">No, I want to keep it.</label>
+          </div>
+        
+          <div class="blog-form__field">
+            <input type="radio" id="yes" name="delete" value="true" />
+            <label for="yes">Yes, delete this article.</label>
+          </div>
 
-    <input type="submit" value="Continue">
-  </form>
+          <div class="blog-form__field--right">
+            <input class="blog-form__button" type="submit" value="Continue">
+          </div>
+        </form>
+      </main>
+    </div>
+    <nav class="blog-right"></nav>
+      <a class="blog-link" href="/admin">Back</a>
+    </nav>
+  </div>
 </body>
 </html>

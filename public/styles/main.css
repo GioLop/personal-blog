@@ -1,5 +1,156 @@
-h1 {
-  color: red;
+@font-face {
+  font-family: "JetBrainsRegular";
+  src: url("/fonts/JetBrainsMono-Regular.woff2");
+}
+@font-face {
+  font-family: "JetBrainsBold";
+  src: url("/fonts/JetBrainsMono-Bold.woff2");
+}
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  font-family: "JetBrainsRegular";
+  padding: 0;
+  margin: 0;
+  font-size: 0.95rem;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+body {
+  font-size: 16px;
+}
+
+.blog-wrapper {
+  display: flex;
+  max-width: 470px;
+  margin: 0px auto;
+  padding: 30px 0;
+}
+
+.blog-title {
+  color: #000;
+  font-family: "JetBrainsBold";
+  font-size: 1.1rem;
+  margin-bottom: 20px;
+}
+
+.blog-parragraph {
+  line-height: 1.5rem;
+  letter-spacing: 0.03rem;
+}
+
+.blog-main br {
+  display: block;
+  content: "";
+  height: 1rem;
+}
+
+.blog-left {
+  width: 356px;
+}
+
+.blog-right {
+  text-align: right;
+  width: 115px;
+}
+
+.blog-home__parragraph {
+  margin-bottom: 1.5rem;
+}
+.blog-home__article {
+  display: flex;
+  flex-direction: flow;
+  margin-bottom: 1.5rem;
+}
+.blog-home__publish-date {
+  margin-right: 1.5rem;
+}
+
+.blog-link {
+  color: #000;
+  font-family: "JetBrainsBold";
+}
+.blog-link:hover {
+  text-decoration: none;
+}
+.blog-link:visited {
+  color: #000;
+}
+
+.blog-bold {
+  font-family: "JetBrainsBold";
+}
+
+.blog-article__time {
+  display: block;
+  margin-bottom: 1.5rem;
+}
+
+.blog-login__parragraph {
+  margin-bottom: 1.5rem;
+}
+
+.blog-form__field {
+  margin-bottom: 1.5rem;
+}
+.blog-form__field--right {
+  text-align: right;
+}
+.blog-form__label {
+  display: block;
+  margin-bottom: 0.5rem;
+}
+.blog-form__input {
+  padding: 0.5rem;
+  width: 100%;
+}
+.blog-form__date {
+  padding: 0.5rem;
+}
+.blog-form__text {
+  height: 350px;
+  padding: 0.5rem;
+  resize: none;
+  width: 100%;
+}
+.blog-form__button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: "JetBrainsBold";
+  text-decoration: underline;
+}
+.blog-form__button:hover {
+  text-decoration: none;
+}
+
+.blog-admin__link {
+  display: flex;
+  margin-bottom: 1.5rem;
+}
+.blog-admin__article {
+  display: flex;
+  flex-direction: flow;
+  margin-bottom: 1.5rem;
+}
+.blog-admin__links {
+  margin-right: 1.5rem;
+}
+
+.blog-article-form__parragraph {
+  margin-bottom: 1.5rem;
+}
+
+.blog-delete__parragraph {
+  margin-bottom: 1.5rem;
+}
+
+.blog-wrong__parragraph {
+  margin-bottom: 1.5rem;
 }
 
 /*# sourceMappingURL=main.css.map */

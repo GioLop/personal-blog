@@ -11,7 +11,7 @@ const httpGetEditHandler = (req: Request, res: Response) => {
     const article = await getArticleById(articleId);
 
     if (article) {
-      const body = getRawBreakLines(article?.body);
+      const body = getRawBreakLines(article.body);
 
       res.render('pages/articleForm', {
         formTitle: 'Edit Article',
@@ -37,8 +37,8 @@ const httpPostEditHandler = (req: Request, res: Response) => {
       body: content
     };
 
-    await updateArticle(articleId, articleData);
-    await updateArticleIndex(articleId, articleData);
+    const article = await updateArticle(articleId, articleData);
+    await updateArticleIndex(articleId, article);
 
     res.redirect(`/article/${articleId}`);
   })();

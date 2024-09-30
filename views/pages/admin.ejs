@@ -2,23 +2,32 @@
 <html lang="en">
 <head>
   <%-  include('../partials/head') %>
-  <title>Document</title>
+  <title>Personal Blog Admin</title>
 </head>
 <body>
-  <div>
-    <h1>Personal Blog</h1>
-    <a href="/new">Add</a>
+  <div class="blog-wrapper">
+    <div class="blog-left">
+      <header class="blog-header">
+        <h1 class="blog-title">Personal Blog</h1>
+      </header>
+      <main class="blog-main blog-admin">
+        <a class="blog-link blog-admin__link" href="/new">+ Add</a>
+        <ul class="blog-admin__articles-list">
+          <% articles.forEach(({ title, id }) => { %>
+          <li class="blog-admin__article">
+            <div class="blog-admin__links">
+              <a class="blog-link" href="/edit/<%= id %>">Edit</a>
+              <a class="blog-link" href="/delete/<%= id %>">Delete</a>
+            </div>
+            <h3  class="admin__article-title"><%= title %></h3>
+          </li>
+          <% })%>
+        </ul>
+      </main>  
+    </div>
+    <nav class="blog-right"></nav>
+      <a class="blog-link" href="/">Home</a>
+    </nav>
   </div>
-  <ul></ul>
-    <% articles.forEach(({ title, id }) => { %>
-    <li>
-      <h3><%= title %></h3>
-      <div>
-        <a href="/edit/<%= id %>">Edit</a>
-        <a href="/delete/<%= id %>">Delete</a>
-      </div>
-    </li>
-    <% }) %>
-  </ul>
 </body>
 </html>

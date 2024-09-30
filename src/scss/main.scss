@@ -1,5 +1,11 @@
-$color_red: red;
-
-h1 {
-  color: $color_red;
-}
+@import 'variables/color';
+@import 'globals/font-face';
+@import 'globals/reset';
+@import 'globals/shared';
+@import 'pages/article';
+@import 'pages/login';
+@import 'pages/form';
+@import 'pages/admin';
+@import 'pages/article-form';
+@import 'pages/delete';
+@import 'pages/wrong';
