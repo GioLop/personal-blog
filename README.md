@@ -2,7 +2,7 @@
 
 This is a simple web blog built in Nodejs, Typescript, EJS and SASS, this blog have a guest and an admin side, is the admin side you’ll be asked to login in order to add, edit or delete articles.
 
-## project url
+## Project URL
 
 roadmap(https://roadmap.sh/projects/personal-blog)
 
